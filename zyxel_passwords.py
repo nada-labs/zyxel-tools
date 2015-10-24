@@ -5,6 +5,8 @@
 #
 #Not tested on win32, YMMV. Send me a patch if needed.
 #
+# See http://nada-labs.net/ for more info.
+#
 
 import sys
 
@@ -39,8 +41,13 @@ def dump_passwords(cfg):
 
     return o
 
+#local UPnP class to shut up some error messages
+class localUPnP(upnp):
+	def updateCmdCompleter(self,struct):
+		pass 
+
 def get_router_config():
-    hp = upnp(False, False, None, {})
+    hp = localUPnP(False, False, None, {})
     hp.UNIQ = True
     hp.VERBOSE = False
     hp.TIMEOUT = 1
@@ -81,7 +88,7 @@ def get_router_config():
                     tv = hp.extractSingleTag(sr,'NewConfigFile')
                     return tv
 
-        except:
+        except KeyError:
             pass
 
 if __name__ == '__main__':
