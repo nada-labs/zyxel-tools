@@ -1,0 +1,3 @@
+[submodule "miranda-upnp"]
+	path = miranda-upnp
+	url = https://github.com/0x90/miranda-upnp.git
