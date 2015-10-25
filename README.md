@@ -8,6 +8,6 @@ responisibility.
 ## First Steps
 
 After checking out run the following commands:
-  git submodule init
-  git submodule update
+    git submodule init
+    git submodule update
 
