@@ -5,7 +5,7 @@
 #
 #Not tested on win32, YMMV. Send me a patch if needed.
 #
-# See http://nada-labs.net/ for more info.
+#See http://nada-labs.net/2015/getting-root-on-a-telus-vgs1432 for more info.
 #
 
 import sys
